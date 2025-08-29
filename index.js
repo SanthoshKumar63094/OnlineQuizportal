@@ -162,7 +162,11 @@ document.getElementById("prev-btn").onclick = handlePrev;
 
 // ------------------ REVIEW ANSWERS ------------------
 function showReview() {
+  // Stop any running question timer when entering review
+  clearInterval(timer);
+  // Ensure only the review page is visible
   quizPage.classList.add("hidden");
+  resultPage.classList.add("hidden");
   reviewPage.classList.remove("hidden");
 
   reviewList.innerHTML = "";
@@ -191,6 +195,9 @@ document.getElementById("submit-btn").onclick = function () {
 
 // ------------------ SHOW RESULT ------------------
 function showResult() {
+  // Stop any running timer so it doesn't navigate back to review
+  clearInterval(timer);
+  // Ensure only the result page is visible
   reviewPage.classList.add("hidden");
   resultPage.classList.remove("hidden");
 
@@ -214,9 +221,12 @@ function showResult() {
 }
 
 // ------------------ RETRY BUTTON ------------------
-document.getElementById("retry-btn").onclick = function () {
-  current = 0;
-  selectedAnswers = {};
-  resultPage.classList.add("hidden");
-  startPage.classList.remove("hidden");
-};
+const retryBtn = document.getElementById("retry-btn");
+if (retryBtn) {
+  retryBtn.onclick = function () {
+    current = 0;
+    selectedAnswers = {};
+    resultPage.classList.add("hidden");
+    startPage.classList.remove("hidden");
+  };
+}
