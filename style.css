@@ -156,6 +156,14 @@ button:disabled {
   gap: 14px;
 }
 
+/* Review Page actions */
+#review-page #submit-btn {
+  display: block;            /* take full line to allow centering */
+  margin: 28px auto 0;       /* create height gap and center horizontally */
+  padding: 12px 28px;        /* slightly larger click target */
+  min-width: 180px;          /* consistent width */
+}
+
 #review-list li {
   padding: 12px 14px;
   border-radius: 10px;
