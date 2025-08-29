@@ -1,0 +1,258 @@
+/* Reset and base setup */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.app {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  max-width: 600px;
+  min-width: 400px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+h1 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Start Page */
+#start-page:not(.hidden) {
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+}
+
+#start-page h1 {
+  color: #333;
+}
+
+#player-name {
+  width: 80%;
+  max-width: 320px;
+  padding: 10px 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+#player-name::placeholder {
+  color: #9ca3af;
+}
+
+#player-name:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+}
+
+#start-btn {
+  background: #5e60ce;
+  padding: 10px 22px;
+  border-radius: 8px;
+  color: #fff;
+  transition: background .2s ease, transform .1s ease;
+}
+
+#start-btn:hover {
+  background: #3f37c9;
+}
+
+#start-btn:active {
+  transform: translateY(1px);
+}
+
+/* Quiz Page */
+.timer {
+  font-size: 18px;
+  color: #e63946;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.question-box h2 {
+  font-size: 20px;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.option {
+  margin: 10px 0;
+}
+
+.option label {
+  display: block;
+  background: #f4f4f4;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.option input[type="radio"] {
+  margin-right: 12px;
+  transform: scale(1.2);
+}
+
+.option label:hover {
+  background: #e2e8f0;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 5px;
+  align-items: center;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  background: #5e60ce;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #37c965;
+}
+
+button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Review Page */
+#review-list {
+  margin-top: 20px;
+  padding-left: 0;
+  list-style-position: inside;
+  display: grid;
+  gap: 14px;
+}
+
+#review-list li {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  border-left: 6px solid #94a3b8;
+}
+
+#review-list li.correct {
+  border-left-color: #16a34a;
+}
+
+#review-list li.incorrect {
+  border-left-color: #ef4444;
+}
+
+#review-list .ans {
+  margin-top: 6px;
+}
+
+#review-list .ans .label {
+  color: #334155;
+  font-weight: 600;
+}
+
+#review-list .ans .value {
+  color: #111827;
+}
+
+#review-list .ans.your.correct .value {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+#review-list .ans.your.incorrect .value {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+#review-list .ans.correct .value {
+  color: #16a34a;
+  font-style: italic;
+}
+
+/* Result Page */
+.result-box {
+  text-align: center;
+}
+
+/* Result Page styling */
+#result-page:not(.hidden) {
+  display: grid;
+  place-items: center;
+}
+
+#result-page .result-box {
+  background: #ffffff;
+  padding: 28px 32px;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0,0,0,.15);
+  max-width: 640px; /* give a bit more room for single-line title */
+  width: min(92vw, 523px);
+  animation: fadeIn .5s ease;
+}
+
+#result-page .result-box h1 {
+  font-size: 32px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #111 10%, #4f46e5 50%, #7c3aed 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap; /* keep on one line */
+}
+
+#final-score {
+  font-size: 18px;
+  color: #111827;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+#message {
+  font-size: 16px;
+  color: #374151;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
